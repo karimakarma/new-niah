@@ -45,6 +45,8 @@ The extension uses `chrome.storage.local` to save:
 
 ## Contributing
 Feel free to fork and submit pull requests. Please ensure your code is clean and well-documented.
+Alternatively, you can file a feedback or suggestion in the following form:
+https://forms.gle/4FpK2971zMpxfkCZA
 
 ## License
 MIT License

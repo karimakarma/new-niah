@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-base-50: oklch(0.963 0.024 114.47);
+  --color-base-100: oklch(0.929 0.027 113.79);
+  --color-base-200: oklch(0.853 0.025 114.55);
+  --color-base-300: oklch(0.783 0.022 112.64);
+  --color-base-400: oklch(0.713 0.02 113.45);
+  --color-base-500: oklch(0.645 0.018 114.52);
+  --color-base-600: oklch(0.568 0.017 115.25);
+  --color-base-700: oklch(0.5 0.014 112);
+  --color-base-800: oklch(0.43 0.013 118.32);
+  --color-base-900: oklch(0.357 0.01 114.55);
+  --color-base-950: oklch(0.249 0.008 118.31);
+  --color-accent-50: oklch(0.964 0.016 139.32);
+  --color-accent-100: oklch(0.918 0.042 137.5);
+  --color-accent-200: oklch(0.85 0.044 137.82);
+  --color-accent-300: oklch(0.771 0.039 137.82);
+  --color-accent-400: oklch(0.694 0.035 138.2);
+  --color-accent-500: oklch(0.626 0.032 137.4);
+  --color-accent-600: oklch(0.547 0.028 137.82);
+  --color-accent-700: oklch(0.445 0.022 137.82);
+  --color-accent-800: oklch(0.343 0.018 138.71);
+  --color-accent-900: oklch(0.24 0.013 140.42);
+  --color-accent-950: oklch(0.186 0.009 137.82);
+  --color-highlight-50: oklch(0.959 0.017 17.56);
+  --color-highlight-100: oklch(0.927 0.031 17.78);
+  --color-highlight-200: oklch(0.853 0.069 18.63);
+  --color-highlight-300: oklch(0.78 0.111 19.89);
+  --color-highlight-400: oklch(0.7 0.165 22.29);
+  --color-highlight-500: oklch(0.63 0.224 26.54);
+  --color-highlight-600: oklch(0.552 0.203 27.07);
+  --color-highlight-700: oklch(0.451 0.166 27.12);
+  --color-highlight-800: oklch(0.351 0.129 27);
+  --color-highlight-900: oklch(0.243 0.09 27.23);
+  --color-highlight-950: oklch(0.198 0.073 27.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+strong {
+  color: var(--color-highlight-600);
+}
+
+a {
+  cursor: pointer;
+}

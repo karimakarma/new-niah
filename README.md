@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Focus Tab Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Focus Tab is a Chrome extension designed to help you stay focused by controlling access to websites based on customizable whitelist and blacklist rules. When activated, it blocks or marks unlisted sites, encouraging productive browsing sessions.
 
-Currently, two official plugins are available:
+## Features
+- **Whitelist and Blacklist Management:** Define which sites are allowed (whitelist) and which are blocked (blacklist).
+- **Unlisted Site Handling:** Sites not on either list show a distinct "Unlisted Site" message with options to add them to whitelist or blacklist.
+- **Overlay Widget:** Displays a draggable timer and task list to help you track your focus session.
+- **Session Control:** Automatically stops the session when the timer ends.
+- **Easy Controls:** Pause, stop, and manage your focus session directly from the overlay.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How It Works
+- When the extension is running, it checks the current site's hostname against your whitelist and blacklist.
+- If the site is whitelisted, the overlay widget appears, showing your focus timer and tasks.
+- If the site is blacklisted, the page is blocked with a "Blocked" message.
+- If the site is neither, it shows an "Unlisted Site" message with options to add it to your lists.
 
-## React Compiler
+## Installation
+1. Clone or download this repository.
+2. Open Chrome and go to `chrome://extensions/`.
+3. Enable "Developer mode" (top right).
+4. Click "Load unpacked" and select the extension folder.
+5. The extension will be installed and ready to use.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Usage
+- Start a focus session by setting a timer and optionally adding tasks and a motivation note ("niat").
+- Visit websites; the extension will enforce your whitelist and blacklist rules.
+- On unlisted sites, use the provided buttons to add them to your whitelist or blacklist.
+- Use the overlay controls to pause or stop your session anytime.
 
-## Expanding the ESLint configuration
+## Storage
+The extension uses `chrome.storage.local` to save:
+- `running`: Whether a focus session is active.
+- `whitelist`: Array of allowed hostnames.
+- `blacklist`: Array of blocked hostnames.
+- `endTime`: Timestamp when the session ends.
+- `niat`: Motivation or intention note.
+- `todos`: List of tasks for the session.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Development
+- The main logic is in the content script, which injects the overlay and manages site blocking.
+- The overlay is draggable and updates every second to show remaining time.
+- Adding sites to whitelist or blacklist updates storage and reloads or updates the UI accordingly.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Contributing
+Feel free to fork and submit pull requests. Please ensure your code is clean and well-documented.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## License
+MIT License
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Stay focused. Block distractions. Get things done.
